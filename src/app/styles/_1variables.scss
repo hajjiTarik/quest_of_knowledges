@@ -1,0 +1,11 @@
+$main_color: #c9c0b7;
+%button-style{
+  background: url(../assets/images/game-background/background-button.jpg) repeat;
+  box-shadow:
+          inset 0px 0px 7px #322d2c,
+          inset -1px 1px 8px 0px #4b3c34,
+          0px 0px 0px 4px #6e6460,
+          0px 0px 2px 0px #3e3a37,
+          4px -2px 0px 1px #8d7f70;
+  border: 4px solid #a99a88;
+}

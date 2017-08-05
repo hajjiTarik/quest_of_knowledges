@@ -1,0 +1,69 @@
+<!doctype html>
+<html ng-app="questOfknowledges">
+<head>
+    <meta charset="utf-8">
+    <title>Cross Questions</title>
+    <meta name="description"
+          content="">
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src * cdvfile://*; style-src 'self' 'unsafe-inline';script-src 'self' * 'unsafe-inline' 'unsafe-eval';">
+    <meta name="format-detection"
+          content="telephone=no">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp/serve,src}) styles/app.css -->
+    <!-- inject:css -->
+    <!-- css files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+</head>
+<body ng-cloak
+      ng-controller="MainController as mainCtrl"
+      class="body">
+<ion-side-menus>
+    <ion-side-menu-content>
+        <ion-nav-view>
+            {{online}}
+            <div ng-show="!online" class="game-disabled">
+                <div class="connection-message">
+                    <p>Waiting for connection</p>
+                    <div class="loading-points">
+                        <span class="point p-1"></span>
+                        <span class="point p-2"></span>
+                        <span class="point p-3"></span>
+                    </div>
+                </div>
+            </div>
+        </ion-nav-view>
+    </ion-side-menu-content>
+<!-- build:js(src) scripts/vendor.js -->
+<!-- bower:js -->
+<!-- run `gulp inject` to automatically populate bower script dependencies -->
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+<!-- inject:js -->
+<!-- js files will be automatically insert here -->
+<!-- endinject -->
+
+<!-- inject:partials -->
+<!-- angular templates will be automatically converted in js and inserted here -->
+<!-- endinject -->
+<!-- endbuild -->
+<!-- Manually Added -->
+    <script src="./externals/socket.io.js"></script>
+</body>
+</html>

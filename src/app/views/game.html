@@ -1,0 +1,29 @@
+<ion-content class="game-scene">
+    <div class="players-fighting-bar clearfix">
+        <span class="player p-1">
+            <img src="#" />
+            <label>player 1</label>
+        </span>
+        <div class="fighting-bar-counter">
+                <span class="player-counter count-1"></span>
+                <span class="player-counter count-2"></span>
+        </div>
+        <span class="player p-2">
+            <img src="#" />
+            <label>player 2</label>
+        </span>
+    </div>
+    <div class="game-scene-body">
+        <ion-slide-box ng-init="vm.disableSwipe()" show-pager="false" active-slide="index">
+            <ion-slide ng-repeat="answer in vm.answers">
+                <h1>{{vm.opAnswer}}</h1>
+                <div class="question-body">
+                    <p class="question-content" ng-bind-html="answer.question"></p>
+                    <ul class="answers-list">
+                        <li class="answer-item" ng-click="vm.checkResponse(response, answer.correct_answer)" ng-repeat="response in answer.all_answer"><p ng-bind-html="response"></p></li>
+                    </ul>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+    </div>
+</ion-content>

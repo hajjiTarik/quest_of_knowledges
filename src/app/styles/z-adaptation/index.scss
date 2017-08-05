@@ -1,0 +1,105 @@
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px)
+and (orientation : portrait) {
+  .logo {
+    margin-top: -80px;
+  }
+  .main-menu {
+    margin-top: 20px;
+    li {
+      width: 190px;
+      height: 90px;
+      &:first-child {
+        width: 210px;
+        height: 98px;
+      }
+      &.start{
+        &:after {
+          width: 19px !important;
+          height: 40px !important;
+          z-index: 1;
+          bottom: -34px !important;
+        }
+      }
+    }
+  }
+  .button {
+    width: 70%;
+  }
+  .sub-menu {
+    margin: 10px;
+    label {
+      width: 40px;
+      height: 40px;
+    }
+    li:first-child:after {
+      width: 19px;
+      height: 44px;
+      bottom: -35px;
+      z-index: 1;
+      background-size: contain;
+    }
+  }
+  .level-menu {
+    margin: 30px 10px 10px 10px;
+    li {
+      width: 21%;
+      height: 52px;
+      margin: 6px;
+      a {
+        font-size: 28px;
+        line-height: 53px;
+      }
+    }
+  }
+  .footer .play-button {
+    width: 180px;
+    img {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      margin: auto;
+      width: 70%;
+    }
+  }
+}
+/* FOR SMALL DEVICES */
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 667px) {
+  .main-menu{
+    margin-top: 40px;
+  }
+  .main-menu li{
+    width: 210px;
+    height: 98px;
+  }
+  .main-menu li:first-child{
+    width: 230px;
+    height: 103px;
+  }
+  .button{
+    width: 75%;
+  }
+  .level-menu li {
+    height: 61px;
+  }
+  .level-menu li a {
+    font-size: 32px;
+    line-height: 63px;
+  }
+  .footer .play-button {
+    width: 210px;
+    height: 100px;
+  }
+}
+@media only screen
+and (min-device-width : 414px)
+and (max-device-width : 667px) {
+  .level-menu li {
+    height: 69px;
+  }
+}

@@ -1,0 +1,84 @@
+.game-disabled-container{
+  position: relative;
+}
+.connection-message{
+  font-family: POLYPTY;
+  color: #c9c0b7;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  font-size: 3vh;
+  text-align: center;
+  height: 29px;
+  p{
+    display: inline-block;
+  }
+}
+.loading-points {
+  font-size: 0;
+  display: inline-block;
+  .point {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+    background: $main_color;
+    margin-right: 2px;
+    &.p-1{
+      animation:animateLoader-1 1.5s infinite;
+    }
+    &.p-2{
+      animation:animateLoader-2 1.5s infinite;
+    }
+    &.p-3{
+      animation:animateLoader-3 1.5s infinite;
+    }
+  }
+}
+.custom-button{
+  display: block;
+  position: relative;
+  width: 80%;
+  height: 100%;
+  opacity:1;
+  margin: 0 auto;
+  img{
+    position: absolute;
+    top:0; bottom: 0;
+    right:0; left: 0;
+    margin: auto;
+  }
+}
+@keyframes animateLoader-1 {
+  25% { opacity: 1 }
+  50% { opacity: 0.5 }
+  75% { opacity: 0 }
+}
+@keyframes animateLoader-2 {
+  25% { opacity: 0.5 }
+  50% { opacity: 0 }
+  75% { opacity: 1 }
+}
+@keyframes animateLoader-3 {
+  25% { opacity: 0 }
+  50% { opacity: 1 }
+  75% { opacity: 0.5 }
+}
+
+.hero{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 0;
+  height: 420px;
+  float: right;
+  background: url('../assets/images/hero.png') no-repeat;
+  background-size: cover;
+  animation: play 4s steps(2) infinite;
+}
+@keyframes play {
+  100% { background-position: -755px 0px;}
+}

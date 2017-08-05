@@ -1,0 +1,8 @@
+/bower_components
+/.idea
+/node_modules
+/build
+/platforms
+/plugins
+/.tmp
+/www

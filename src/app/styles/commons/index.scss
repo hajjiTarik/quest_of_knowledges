@@ -1,0 +1,110 @@
+@include font-face('POLYPTY','POLYPTY');
+body{
+  font-family: POLYPTY;
+}
+
+.game-disabled{
+  position: absolute;
+  z-index: 1000;
+  background: rgba(0,0,0,.7);
+  width: 100%;
+  height: 100%;
+}
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}
+.respensive-image{
+  width: 100%;
+  height: auto;
+}
+.vertical-center{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.text-center{
+  text-align: center;
+}
+.start-scene {
+  background: url("../assets/images/game-background/main-background.png") no-repeat;
+  background-size:cover;
+}
+.game-scene {
+  background: url("../assets/images/game-background/war-background.png") no-repeat;
+  background-size:cover;
+}
+.logo{
+  img{
+    margin-top: -80px;
+    width: 95%;
+    animation: play-logo 1s infinite;
+  }
+  @keyframes play-logo {
+    25% { transform: rotate(2deg) }
+    75% { btransform: rotate(-4deg) }
+  }
+}
+
+.options{
+  position: relative;
+  &:after, &:before{
+    content: '';
+    width: 20px;
+    height: 38px;
+    background: url("../assets/images/chains/double-chain.png") no-repeat;
+    position: absolute;
+    bottom: -26px;
+  }
+  &:after{
+    left: 50px;
+  }
+  &:before{
+    right: 50px;
+  }
+}
+
+.sub-menu{
+  list-style: none;
+  z-index: 2;
+  margin: 20px;
+  li{
+    display: inline-block;
+    margin-right: 10px;
+    label{
+      display: inline-block;
+      width: 45px;
+      height: 45px;
+      position: relative;
+    }
+  }
+  input[type='checkbox']{
+    display: none;
+    &:checked + label:after{
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: url('../assets/images/sub-menu/cross.png') no-repeat;
+      background-size: contain;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  }
+  label{
+    &.musique{
+      background: url('../assets/images/sub-menu/musique.png') no-repeat;
+      background-size: contain;
+    }
+    &.son{
+      background: url('../assets/images/sub-menu/son.png') no-repeat;
+      background-size: contain;
+    }
+  }
+}

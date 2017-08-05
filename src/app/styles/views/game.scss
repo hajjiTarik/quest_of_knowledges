@@ -1,0 +1,138 @@
+.players-fighting-bar{
+  .player{
+    width: 15%;
+    overflow: hidden;
+    padding: 4px;
+    font-size: 1.5vh;
+    color: $main_color;
+    text-align: center;
+    img{
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+  span.p-1{
+    float: left;
+  }
+  span.p-2{
+    float: right;
+  }
+}
+.fighting-bar-counter{
+  float: left;
+  font-size: 0;
+  width: 70%;
+  position: relative;
+  margin-top: 15px;
+  padding: 2px;
+  border-radius: 8px;
+  background: #c9c0b7;
+  .fighting-bar-counter-container{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom: 0;
+    margin: auto;
+    height:20px;
+  }
+  .player-counter{
+    height: 20px;
+    width: 50%;
+    background: #000;
+    display: inline-block;
+  }
+  .count-1{
+    background: repeating-linear-gradient(45deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px);
+    box-shadow: inset 0px -5px 0px 0px rgba(70, 82, 152, 0.8);
+    float: left;
+    border-radius: 8px 0px 0px 8px;
+  }
+  .count-2{
+    background: #ff8130;
+    background: repeating-linear-gradient(45deg, #ea6f51, #fd6f3a 10px, #ff4d1e 10px, #ff3b1b 20px);
+    box-shadow: inset 0px -5px 0px 0px #ff3b1b;
+    float: right;
+    border-radius: 0px 8px 8px 0px;
+  }
+}
+.question-body{
+  font-family: POLYPTY;
+  .question-content{
+    font-size: 3.2vh;
+    text-align: center;
+    color: #c9c0b7;
+    padding: 12px;
+    margin: 5px 20px;
+    border-radius: 10px;
+    line-height: 1.2;
+    position: relative;
+    @extend %button-style;
+    &:after, &:before{
+      content: '';
+      width: 19px;
+      height: 32px;
+      background: url(../assets/images/chains/double-chain.png) no-repeat;
+      position: absolute;
+      bottom: -33px;
+      background-size: cover;
+      z-index: 1;
+    }
+    &:after{
+      left: 40px;
+    }
+    &:before{
+      right: 40px;
+    }
+  }
+  .answers-list{
+    font-size: 0;
+    margin-top: 25px;
+    .answer-item{
+      @extend %button-style;
+      padding: 12px;
+      margin: 20px;
+      font-size: 3.2vh;
+      color: $main_color;
+      border-radius: 6px;
+      background: #755e46;
+      position: relative;
+      &.correct{
+        background: #0e8435;
+      }
+      &.incorrect{
+        background: #ff431e;
+      }
+      &:after, &:before{
+        content: '';
+        width: 15px;
+        height: 27px;
+        background: url(../assets/images/chains/double-chain.png) no-repeat;
+        position: absolute;
+        bottom: -28px;
+        background-size: cover;
+        z-index: 1;
+      }
+      &:last-child{
+        &:after, &:before{
+          display: none;
+        }
+      }
+      &:after{
+        left: 50px;
+      }
+      &:before{
+        right: 50px;
+      }
+      &:hover{
+        transition: all .3s;
+        background: #A69D95 !important;
+      }
+      p{
+        margin: 0; padding: 0;
+        text-align: center;
+      }
+    }
+  }
+}

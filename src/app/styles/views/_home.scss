@@ -1,0 +1,41 @@
+.main-menu{
+  position: relative;
+  z-index: 1;
+  margin-top: 70px;
+  li{
+    margin: 0 auto 15px;
+    background: url("../assets/images/button/background.png") no-repeat;
+    background-size: contain;
+    width: 235px;
+    height: 115px;
+    &:hover{
+      transition: all .4s ease;
+      transform: rotate(1deg);
+    }
+    &:first-child{
+      background: url("../assets/images/button/big-background.png") no-repeat;
+      background-size: contain;
+      width: 250px;
+      height: 120px;
+      display: block;
+      margin-bottom: 25px;
+      position: relative;
+      &:after{
+        content: '';
+        width: 26px;
+        height: 60px;
+        background: url("../assets/images/chains/chain.png") no-repeat;
+        background-size: contain;
+        position: absolute;
+        bottom: -44px;
+        right: 0;
+        left: 0;
+        margin: auto;
+      }
+    }
+    a:hover{
+      transition: all .4s;
+      transform: rotate(-4deg);
+    }
+  }
+}
