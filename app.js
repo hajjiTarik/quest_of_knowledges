@@ -5,8 +5,8 @@ var http = require('http').Server(app);
 var io = require('socket.io').listen(http);
 var path = require('path');
 var uuid = require('node-uuid');
-var redis = require('./checkers/redis');
-var config = require('./checkers/config');
+var redis = require('./server/redis');
+var config = require('./server/config');
 
 app.use(express.static('www'));
 app.use(express.static('bower_components'));
@@ -36,15 +36,20 @@ io.sockets.on('connection', function(socket){
     redis.closeGame(socket.id, dispatcher);
     console.log('user disconnected');
   });
+
   socket.on('chat message', function(message){
-    //socket.broadcast.emit(message);
     socket.emit('chat message',message);
     console.log('message: ' + message);
   });
 
+  socket.on('move', function(obj){
+    console.log('move players', obj);
+    redis.checkOpponent(obj, dispatcher);
+  });
+
   socket.on('answer', function(obj){
     console.log('response answers', obj);
-    redis.sendReponse(obj, dispatcher);
+    redis.getPlayerAnswers(obj, dispatcher);
   });
 });
 
