@@ -8,7 +8,7 @@
     .controller('levelsController', LevelsControllerFct);
 
 
-  function LevelsControllerFct(persistFetchedResults){
+  function LevelsControllerFct(persistFetchedResults, routerHelper, qkConstantes){
 
     var vm = this;
     var playerSettings = persistFetchedResults.getItem('PLAYER_SETTINGS');
@@ -25,7 +25,8 @@
         return;
       }
       vm.error = false;
-      console.log(level);
+      persistFetchedResults.setItem('ACTIVE_LEVEL', level);
+      routerHelper.goToState('game');
     }
     // ############## PRIVATE BUSINESS ############# //
     /**
@@ -34,7 +35,7 @@
     function init(){
       var data = persistFetchedResults.getItem('APP_DATA');
       vm.activatedLevel = playerSettings.activatedLevels;
-      vm.levels = _.chunk(data, 5);
+      vm.levels = _.chunk(data, qkConstantes.api.nbQuestionsPerLevel);
     }
     // ################# INITALIZE ################# //
 

@@ -17,6 +17,7 @@ module.exports = {
         games.forEach(function (game, i) {
           if (!foundGame) {
             client.hgetall(game, function (err, reply) {
+              console.log(reply.player1);
               if (reply.player2 === '' && reply.player1 !== socket.id) {
                 console.log('found game', reply);
                 callback({ game: game, found: true, socket: socket });
@@ -83,24 +84,27 @@ module.exports = {
     });
   },
 
-  checkOpponent: function (obj, dispatcher) {
-    client.hgetall(obj.name, function (err, found) {
-      if (obj.player === 'player1') {
-        dispatcher('move', obj, found.player2);
-      }
-      else {
-        dispatcher('move', obj, found.player1);
-      }
-    });
-  },
-
   getPlayerAnswers: function (obj, dispatcher) {
     client.hgetall(obj.name, function (err, found) {
+      console.log('getPlayerAnswers', found);
       if (obj.player === 'player1') {
         dispatcher('answer', obj, found.player2);
       }
       else {
         dispatcher('answer', obj, found.player1);
+      }
+    });
+  },
+
+  changeName: function(obj, dispatcher){
+    console.log(obj);
+    client.hgetall(obj.name, function (err, found) {
+      console.log('found', found);
+      if (obj.player === 'player1') {
+        dispatcher('change name', obj, found.player2);
+      }
+      else {
+        dispatcher('change name', obj, found.player1);
       }
     });
   }

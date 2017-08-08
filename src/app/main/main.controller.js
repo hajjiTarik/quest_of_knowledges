@@ -8,7 +8,6 @@
 
       var vm = this;
 
-      getQuestionAnswersService.fetchQuestionsAnswers();
       function init() {
         vm.goToState = routerHelper.goToState;
         vm.noConntection = WsHelper.isOnline();

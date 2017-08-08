@@ -2,28 +2,14 @@
   'use strict';
   angular
     .module('questOfknowledges')
-    .factory('getQuestionAnswersService', function ($http, $q, WsHelper, $log, qkConstantes, utils, $rootScope, persistFetchedResults) {
-      function fetchQuestionsAnswers() {
-        var defered = $q.defer();
-        var url = qkConstantes.api.base + '?amount=' + qkConstantes.api.nbQuestionsPerLevel + '&category=9&type=multiple';
-
-        if (!WsHelper.isOnline()) {
-          defered.reject();
-          return defered.promise;
-        }
-        $http.get(url).success(function (response) {
+    .factory('getQuestionAnswersService', function (utils, persistFetchedResults) {
+      function fetchQuestionsAnswers(response) {
           if (utils.checkResponse(response.results)) {
             var newResults = utils.reformatResults(response.results);
-            defered.resolve(newResults);
             persistFetchedResults.setItem('APP_DATA', newResults);
           } else {
-            defered.reject(response);
+            persistFetchedResults.setItem('APP_DATA', {});
           }
-        }).error(function (error) {
-          defered.reject(error);
-        });
-
-        return defered.promise;
       }
 
       return {

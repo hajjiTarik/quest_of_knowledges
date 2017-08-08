@@ -5,8 +5,9 @@ var http = require('http').Server(app);
 var io = require('socket.io').listen(http);
 var path = require('path');
 var uuid = require('node-uuid');
-var redis = require('./server/redis');
-var config = require('./server/config');
+var redis = require('./redis');
+var config = require('./config');
+var requester = require('./requester');
 
 app.use(express.static('www'));
 app.use(express.static('bower_components'));
@@ -15,10 +16,8 @@ app.get('/', function(req, res){
   res.sendFile(path.resolve(__dirname + 'www/index.html'));
 });
 
-//dispatcher isn't working. Nothing recieved in client.
-var dispatcher = function(type, obj, toid){
-  console.log(toid);
-  io.sockets.to(toid).emit(type, obj);
+var dispatcher = function(type, obj, toId){
+  io.sockets.to(toId).emit(type, obj);
 };
 
 var associateGame = function(obj){
@@ -29,7 +28,26 @@ var associateGame = function(obj){
   }
 };
 
+var options = {
+  host: 'opentdb.com',
+  port: 443,
+  path: '/api.php?amount=10&category=9&type=multiple',
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+};
+var res = [];
+
+requester.getJSON(options,function(statusCode, result) {
+  console.log("onResult: (" + statusCode + ")" + JSON.stringify(result));
+  res = result;
+});
 io.sockets.on('connection', function(socket){
+
+
+  socket.emit('get data', res);
+
   redis.checkAwaitingGames(socket, associateGame, dispatcher);
 
   socket.on('disconnect', function(){
@@ -42,15 +60,16 @@ io.sockets.on('connection', function(socket){
     console.log('message: ' + message);
   });
 
-  socket.on('move', function(obj){
-    console.log('move players', obj);
-    redis.checkOpponent(obj, dispatcher);
-  });
-
   socket.on('answer', function(obj){
     console.log('response answers', obj);
     redis.getPlayerAnswers(obj, dispatcher);
   });
+
+  socket.on('change name', function(obj){
+    console.log('hehehe', obj);
+    redis.changeName(obj, dispatcher);
+  })
+
 });
 
 http.listen(config.server_port, function(){

@@ -8,11 +8,10 @@
     .controller('gameController', GameControllerFct);
 
 
-  function GameControllerFct(getQuestionAnswersService, $ionicSlideBoxDelegate,routerHelper,qkConstantes,socketIO,  $scope){
+  function GameControllerFct(persistFetchedResults, $ionicSlideBoxDelegate,routerHelper,qkConstantes, socketIO,  $scope, $rootScope){
 
     var vm = this;
-    var numQuestions = 0;
-    var player2found = false;
+    var numQuestions = 1;
 
     // ############## PRIVATE BUSINESS ############# //
     /**
@@ -22,22 +21,6 @@
       $ionicSlideBoxDelegate.enableSlide(false);
     };
 
-    socketIO.on('chat message', function(msg){
-      vm.list.push(msg);
-      $scope.$apply();
-    });
-
-    socketIO.on('game', function(game){
-      vm.game = game;
-      $scope.$apply();
-    });
-
-    socketIO.on('player2 found', function(){
-      console.log('player2 found');
-      vm.myturn = true;
-      vm.player2Found = true;
-      $scope.$apply();
-    });
 
     socketIO.on('player offline', function(){
       console.log('player offline');
@@ -50,23 +33,27 @@
 
     socketIO.on('answer', function(obj){
       vm.opAnswer = obj.response;
-      $scope.$apply();
-      $ionicSlideBoxDelegate.slide(2);
+      $ionicSlideBoxDelegate.slide(numQuestions++);
     });
 
-    vm.checkResponse = function(response, correctResponse){
-      if(response != correctResponse) return false;
-      numQuestions++;
-      $ionicSlideBoxDelegate.slide(numQuestions);
+    socketIO.on('change name', function(obj){
+      console.log(obj);
+    })
 
-      // régles d'exclusion
-      if(numQuestions == qkConstantes.nbQuestionsPerLevel){
+    vm.checkResponse = function(response, correctResponse){
+      console.log(vm.player2Found);
+      if(response != correctResponse) return false;
+      $ionicSlideBoxDelegate.slide(numQuestions++);
+      if(numQuestions == qkConstantes.api.nbQuestionsPerLevel){
         routerHelper.goToState('levels');
       }
-      socketIO.emit('answer',{response: correctResponse, player: vm.game.player, name: vm.game.name});
+      socketIO.emit('answer',{response: correctResponse, player: $rootScope.game.player, name: $rootScope.game.name});
     }
 
     function init(){
+      console.log($rootScope.game);
+      vm.answers = persistFetchedResults.getItem('ACTIVE_LEVEL');
+      vm.player2Found = $rootScope.game.player == 'player1' ? $rootScope.player2Found : true;
     }
     // ################# INITALIZE ################# //
 

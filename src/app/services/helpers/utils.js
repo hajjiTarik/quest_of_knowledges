@@ -31,7 +31,7 @@
         newResult.question = result.question;
         newResult.correct_answer = result.correct_answer;
         result.incorrect_answers.unshift(result.correct_answer);
-        newResult.all_answer = shuffle(result.incorrect_answers);
+        newResult.all_answer = result.incorrect_answers;
         newResults.push(newResult);
       })
 

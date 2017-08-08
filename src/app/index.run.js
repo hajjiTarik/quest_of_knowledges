@@ -12,6 +12,7 @@
     // Test de la connexion internet
     WsHelper.isOnline();
     initializeGameService.init();
+    initializeGameService.initServer();
     socketIO.on('onconnected', function (id) {
       console.log('vous etes connectés avec:', id);
     })
