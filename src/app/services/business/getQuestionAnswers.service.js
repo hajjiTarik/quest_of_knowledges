@@ -2,7 +2,7 @@
   'use strict';
   angular
     .module('questOfknowledges')
-    .factory('getQuestionAnswersService', function ($http, $q, WsHelper, $log, qkConstantes, utils, $rootScope) {
+    .factory('getQuestionAnswersService', function ($http, $q, WsHelper, $log, qkConstantes, utils, $rootScope, persistFetchedResults) {
       function fetchQuestionsAnswers() {
         var defered = $q.defer();
         var url = qkConstantes.api.base + '?amount=' + qkConstantes.api.nbQuestionsPerLevel + '&category=9&type=multiple';
@@ -15,6 +15,7 @@
           if (utils.checkResponse(response.results)) {
             var newResults = utils.reformatResults(response.results);
             defered.resolve(newResults);
+            persistFetchedResults.setItem('APP_DATA', newResults);
           } else {
             defered.reject(response);
           }

@@ -63,18 +63,10 @@
       if(numQuestions == qkConstantes.nbQuestionsPerLevel){
         routerHelper.goToState('levels');
       }
-
       socketIO.emit('answer',{response: correctResponse, player: vm.game.player, name: vm.game.name});
     }
 
     function init(){
-      getQuestionAnswersService.fetchQuestionsAnswers().then(function(response){
-        vm.answers = response;
-        setTimeout(function() {
-          $ionicSlideBoxDelegate.slide(0);
-          $ionicSlideBoxDelegate.update();
-        });
-      })
     }
     // ################# INITALIZE ################# //
 

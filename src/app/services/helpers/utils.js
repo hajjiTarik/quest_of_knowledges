@@ -12,9 +12,9 @@
      * @param response
      * @returns {boolean || object}
      */
-    function checkResponse(response) {
-      if(_.isEmpty(response) || _.isNull(response)) return false;
-      return response;
+    function checkResponse(data) {
+      if(_.isEmpty(data) || _.isNull(data)) return false;
+      return data;
     }
 
     /**

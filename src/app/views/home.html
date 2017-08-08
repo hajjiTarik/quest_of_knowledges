@@ -8,11 +8,11 @@
     <div class="hero"></div>
     <ul class="sub-menu">
         <li>
-            <input id="son-check" type="checkbox" name="son" />
+            <input id="son-check" type="checkbox" ng-model="vm.audio.son" ng-change="vm.playerAudioSettings()" name="son" />
             <label for="son-check" class="son"></label>
         </li>
         <li>
-            <input id="musique-check" type="checkbox" name="musique" />
+            <input id="musique-check" type="checkbox" ng-model="vm.audio.musique" ng-change="vm.playerAudioSettings()" name="musique" />
             <label for="musique-check" class="musique"></label>
         </li>
     </ul>

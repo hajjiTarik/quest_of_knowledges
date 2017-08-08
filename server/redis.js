@@ -35,19 +35,19 @@ module.exports = {
       }
     });
   },
-  assignGame: function (game, socketid, dispatcher) {
+  assignGame: function (game, socketId, dispatcher) {
     client.hgetall(game, function (err, reply) {
       if (err) {
-        exports.createGame(socketid);
+        exports.createGame(socketId);
         console.log('error assigning to game');
       }
-      reply.player2 = socketid;
+      reply.player2 = socketId;
       client.hmset(game, reply);
       var message = {
         name: game,
         player: 'player2'
       };
-      dispatcher('game', message, socketid);
+      dispatcher('game', message, socketId);
     });
   },
 
@@ -72,7 +72,7 @@ module.exports = {
     client.keys('*', function (err, games) {
       games.forEach(function (game, i) {
         client.hgetall(game, function (err, reply) {
-          if (reply.player1 === sessionid) {
+          if (reply.player1 === sessionId) {
             client.del(game);
           }
           if (reply.player2 === sessionId) {

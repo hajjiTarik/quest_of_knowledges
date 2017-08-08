@@ -1,0 +1,10 @@
+<ion-content class="start-scene">
+    <div class="start-scene-container">
+        <label for="name_input">Entre your name :</label>
+        <input type="text" id="name_input" placeholder="your name" ng-model="vm.name"/>
+        <span class="error" ng-hide="vm.error">error</span>
+        <a class="custom-button start-button" ng-click="vm.getStarted(vm.name)">
+            <img class="respensive-image" src="./assets/images/text/start.png"/>
+        </a>
+    </div>
+</ion-content>

@@ -1,0 +1,30 @@
+.start-scene-container{
+  text-align: center;
+  padding: 20px;
+  margin-top: 120px;
+  label{
+    font-size: 4vh;
+    margin-bottom: 20px;
+    display: block;
+    color: #43342c;
+
+  }
+  input[type="text"]{
+    font-family: POLYPTY;
+    font-size: 20px;
+    width: 280px;
+    margin: 0 auto;
+    padding: 20px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+}
+.start-button{
+  background: url("../assets/images/button/background.png") no-repeat;
+  background-size: contain;
+  width: 200px;
+  height: 90px;
+  img{
+    width: 75%;
+  }
+}

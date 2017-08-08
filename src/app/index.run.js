@@ -6,10 +6,12 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log, $ionicPlatform, WsHelper, socketIO) {
+  function runBlock($log, $ionicPlatform, WsHelper, socketIO, initializeGameService) {
+
 
     // Test de la connexion internet
     WsHelper.isOnline();
+    initializeGameService.init();
     socketIO.on('onconnected', function (id) {
       console.log('vous etes connectés avec:', id);
     })

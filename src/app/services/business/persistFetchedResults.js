@@ -10,7 +10,7 @@
 
       function getItem(key){
         if(!key) return;
-        return localStorage.getItem(key);
+        return JSON.parse(localStorage.getItem(key));
       }
 
       function clearItem(key) {

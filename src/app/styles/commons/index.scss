@@ -2,7 +2,9 @@
 body{
   font-family: POLYPTY;
 }
-
+.error{
+  color: #ff4c3d;
+}
 .game-disabled{
   position: absolute;
   z-index: 1000;

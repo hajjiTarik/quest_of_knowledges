@@ -7,6 +7,7 @@
         nbQuestionsPerLevel: 10,
       },
       states:{
+        start: 'start',
         home:'home',
         levels:'levels',
         game:'game',
