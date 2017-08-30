@@ -44,8 +44,6 @@ requester.getJSON(options,function(statusCode, result) {
   res = result;
 });
 io.sockets.on('connection', function(socket){
-
-
   socket.emit('get data', res);
 
   redis.checkAwaitingGames(socket, associateGame, dispatcher);
@@ -65,11 +63,9 @@ io.sockets.on('connection', function(socket){
     redis.getPlayerAnswers(obj, dispatcher);
   });
 
-  socket.on('change name', function(obj){
-    console.log('hehehe', obj);
-    redis.changeName(obj, dispatcher);
+  socket.on('send settings', function(response){
+    console.log("tototototto", response);
   })
-
 });
 
 http.listen(config.server_port, function(){

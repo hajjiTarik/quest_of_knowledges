@@ -8,7 +8,7 @@
     .controller('homeController', HomeControllerFct);
 
 
-  function HomeControllerFct(persistFetchedResults) {
+  function HomeControllerFct(persistFetchedResults, $scope) {
 
     var vm = this;
     var playerSettings = persistFetchedResults.getItem('PLAYER_SETTINGS');
@@ -22,6 +22,9 @@
     /**
      * init of the controler
      */
+    $scope.$watch('player2Found', function(newValue){
+      console.log(newValue);
+    });
     function init() {
       vm.audio = playerSettings.audio;
     }

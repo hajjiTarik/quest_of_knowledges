@@ -10,6 +10,7 @@ client.on('connect', function () {
 
 module.exports = {
   checkAwaitingGames: function (socket, callback, dispatcher) {
+    console.log(1);
     var foundGame = false;
     client.keys('*', function (err, games) {
       console.log(games);
@@ -92,19 +93,6 @@ module.exports = {
       }
       else {
         dispatcher('answer', obj, found.player1);
-      }
-    });
-  },
-
-  changeName: function(obj, dispatcher){
-    console.log(obj);
-    client.hgetall(obj.name, function (err, found) {
-      console.log('found', found);
-      if (obj.player === 'player1') {
-        dispatcher('change name', obj, found.player2);
-      }
-      else {
-        dispatcher('change name', obj, found.player1);
       }
     });
   }
