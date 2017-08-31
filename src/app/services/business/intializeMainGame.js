@@ -32,15 +32,25 @@
           console.log('player2 found',obj);
           $rootScope.player2Found = true;
         });
+
         $rootScope.$watch('game', function(newValueOfGame){
           console.log("newValueOfGame", newValueOfGame);
           if(newValueOfGame){
             if(newValueOfGame.player && newValueOfGame.name){
-              socketIO.emit('send settings', {response:playersSettings, player: newValueOfGame.player, game: newValueOfGame.name});
+              console.log("player :", newValueOfGame.player);
+              socketIO.emit('send settings', {
+                response: playersSettings,
+                player: newValueOfGame.player,
+                game: newValueOfGame.name
+              });
             }
           }else{
             console.warn('waiting for response...');
           }
+        })
+
+        socketIO.on('settings changed', function(obj){
+          console.log('settings', obj);
         })
 
         socketIO.on('get data', function(res){

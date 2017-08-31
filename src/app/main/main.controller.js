@@ -4,7 +4,7 @@
   angular
     .module('questOfknowledges')
     //Controller of the main page
-    .controller('MainController', function (routerHelper, WsHelper, getQuestionAnswersService, $rootScope) {
+    .controller('MainController', function (routerHelper, WsHelper) {
 
       var vm = this;
 

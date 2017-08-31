@@ -63,8 +63,9 @@ io.sockets.on('connection', function(socket){
     redis.getPlayerAnswers(obj, dispatcher);
   });
 
-  socket.on('send settings', function(response){
-    console.log("tototototto", response);
+  socket.on('send settings', function(obj){
+    console.log('player server :', obj.player);
+    redis.getPlayerChangeSettings(obj, dispatcher);
   })
 });
 

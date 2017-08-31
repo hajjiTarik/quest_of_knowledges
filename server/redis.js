@@ -10,10 +10,8 @@ client.on('connect', function () {
 
 module.exports = {
   checkAwaitingGames: function (socket, callback, dispatcher) {
-    console.log(1);
     var foundGame = false;
     client.keys('*', function (err, games) {
-      console.log(games);
       if (games.length > 0) {
         games.forEach(function (game, i) {
           if (!foundGame) {
@@ -37,6 +35,14 @@ module.exports = {
       }
     });
   },
+
+  getPlayerChangeSettings: function(obj, dispatcher){
+    client.hgetall(obj.game, function (err, found) {
+        console.log("found server", found);
+        dispatcher('settings changed', obj.response.name, found.player1);
+    });
+  },
+
   assignGame: function (game, socketId, dispatcher) {
     client.hgetall(game, function (err, reply) {
       if (err) {
