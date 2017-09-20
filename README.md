@@ -1,6 +1,6 @@
 # quest_of_knowledges
 
-```js
+``js
 npm install gulp
 
 npm install
@@ -17,5 +17,4 @@ gulp server:dist
 cordova prepare
 
 cordova build ios
-
-```
+``
