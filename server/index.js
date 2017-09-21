@@ -62,11 +62,6 @@ io.sockets.on('connection', function(socket){
     console.log('response answers', obj);
     redis.getPlayerAnswers(obj, dispatcher);
   });
-
-  socket.on('send settings', function(obj){
-    console.log('player server :', obj.player);
-    redis.getPlayerChangeSettings(obj, dispatcher);
-  })
 });
 
 http.listen(config.server_port, function(){

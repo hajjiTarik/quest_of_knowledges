@@ -20,7 +20,7 @@
     }
     // ############## PRIVATE BUSINESS ############# //
     /**
-     * init of the controler
+     * init of the controller
      */
     $scope.$watch('player2Found', function(newValue){
       console.log(newValue);

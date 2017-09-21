@@ -5,7 +5,7 @@
     .factory('socketIO', initSocketIO);
 
   function  initSocketIO($rootScope) {
-    var socket = io.connect('http://localhost:3003');
+    var socket = io.connect('http://192.168.1.124:3003');
     return {
       on: function (eventName, callback) {
         socket.on(eventName, function () {

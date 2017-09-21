@@ -8,7 +8,7 @@
     .controller('gameController', GameControllerFct);
 
 
-  function GameControllerFct(persistFetchedResults, $ionicSlideBoxDelegate,routerHelper,qkConstantes, socketIO,  $scope, $rootScope){
+  function GameControllerFct(persistFetchedResults, $ionicSlideBoxDelegate,routerHelper,qkConstantes, socketIO, $rootScope, $timeout){
 
     var vm = this;
     var numQuestions = 1;
@@ -21,14 +21,11 @@
       $ionicSlideBoxDelegate.enableSlide(false);
     };
 
+    function win(){
 
+    }
     socketIO.on('player offline', function(){
-      console.log('player offline');
-      if(vm.game.player ==='player1'){
-        vm.player2Found = false;
-      }
-      vm.myturn = false;
-      $scope.$apply();
+      win();
     });
 
     socketIO.on('answer', function(obj){
@@ -36,24 +33,29 @@
       $ionicSlideBoxDelegate.slide(numQuestions++);
     });
 
-    socketIO.on('change name', function(obj){
-      console.log(obj);
-    })
-
     vm.checkResponse = function(response, correctResponse){
-      console.log(vm.player2Found);
-      if(response != correctResponse) return false;
+      if(response !== correctResponse) return false;
       $ionicSlideBoxDelegate.slide(numQuestions++);
-      if(numQuestions == qkConstantes.api.nbQuestionsPerLevel){
+      if(numQuestions === qkConstantes.api.nbQuestionsPerLevel){
         routerHelper.goToState('levels');
       }
       socketIO.emit('answer',{response: correctResponse, player: $rootScope.game.player, name: $rootScope.game.name});
     }
 
     function init(){
-      console.log($rootScope.game);
+      console.log($rootScope.game.player);
       vm.answers = persistFetchedResults.getItem('ACTIVE_LEVEL');
-      vm.player2Found = $rootScope.game.player == 'player1' ? $rootScope.player2Found : true;
+      try{
+        vm.player2Found = $rootScope.game.player === 'player1' ? $rootScope.player2Found : true;
+      }catch(e){
+        console.warn(e);
+        vm.showError = true;
+        $timeout(function(){
+          vm.showError = false;
+          routerHelper.goToState('home');
+        },2000);
+
+      }
     }
     // ################# INITALIZE ################# //
 

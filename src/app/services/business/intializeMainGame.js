@@ -25,12 +25,13 @@
           list.push(msg);
         });
         socketIO.on('game', function (game) {
+          console.log('game', game);
           $rootScope.game = game;
         });
 
         socketIO.on('player2 found', function(obj){
           console.log('player2 found',obj);
-          $rootScope.player2Found = true;
+          $rootScope.player2Found = obj;
         });
 
         $rootScope.$watch('game', function(newValueOfGame){
@@ -47,10 +48,6 @@
           }else{
             console.warn('waiting for response...');
           }
-        })
-
-        socketIO.on('settings changed', function(obj){
-          console.log('settings', obj);
         })
 
         socketIO.on('get data', function(res){

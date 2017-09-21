@@ -8,7 +8,7 @@
     .controller('levelsController', LevelsControllerFct);
 
 
-  function LevelsControllerFct(persistFetchedResults, routerHelper, qkConstantes){
+  function LevelsControllerFct(persistFetchedResults, routerHelper, qkConstantes, $rootScope){
 
     var vm = this;
     var playerSettings = persistFetchedResults.getItem('PLAYER_SETTINGS');
@@ -32,8 +32,12 @@
     /**
      * init of the controler
      */
+
     function init(){
       var data = persistFetchedResults.getItem('APP_DATA');
+      vm.isFirstPlayer = !$rootScope.player2Found && $rootScope.game.player === 'player1';
+
+      console.log();
       vm.activatedLevel = playerSettings.activatedLevels;
       vm.levels = _.chunk(data, qkConstantes.api.nbQuestionsPerLevel);
     }

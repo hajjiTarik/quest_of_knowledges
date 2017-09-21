@@ -36,13 +36,6 @@ module.exports = {
     });
   },
 
-  getPlayerChangeSettings: function(obj, dispatcher){
-    client.hgetall(obj.game, function (err, found) {
-        console.log("found server", found);
-        dispatcher('settings changed', obj.response.name, found.player1);
-    });
-  },
-
   assignGame: function (game, socketId, dispatcher) {
     client.hgetall(game, function (err, reply) {
       if (err) {

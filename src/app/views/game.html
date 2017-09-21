@@ -1,8 +1,7 @@
-<div ng-show="!vm.player2Found" class="game-disabled">
-    <h2 class="game-disabled-container text-center">recherche d'avairsaire...</h2>
-</div>
-
 <ion-content class="game-scene">
+    <div ng-show="vm.showError" class="no-player">
+        <h1>no player found</h1>
+    </div>
     <div class="players-fighting-bar clearfix">
         <span class="player p-1">
             <img src="#" />
@@ -10,7 +9,7 @@
         </span>
         <div class="fighting-bar-counter">
                 <span class="player-counter count-1"></span>
-                <span class="player-counter count-2"></span>
+                <span ng-show="" class="player-counter count-2"></span>
         </div>
         <span class="player p-2">
             <img src="#" />
