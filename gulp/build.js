@@ -2,6 +2,7 @@
 
 var path = require('path');
 var gulp = require('gulp');
+var gcopy = require('gulp-copy');
 var conf = require('./conf');
 
 var $ = require('gulp-load-plugins')({
@@ -23,6 +24,11 @@ gulp.task('partials', function () {
             root  : 'app'
         }))
         .pipe(gulp.dest(conf.paths.tmp + '/partials/'));
+});
+
+gulp.task('externals', function() {
+  return gulp.src(path.join(conf.paths.src, '/externals/**.js'))
+    .pipe(gulp.dest(path.join(conf.paths.dist, '/externals/')));
 });
 
 gulp.task('html', ['inject', 'partials'], function () {
@@ -92,4 +98,4 @@ gulp.task('clean', function (done) {
     $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/')], done);
 });
 
-gulp.task('build', ['html', 'fonts', 'other']);
+gulp.task('build', ['html', 'fonts', 'other','externals']);

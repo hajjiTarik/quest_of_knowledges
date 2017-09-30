@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>805667268677-kk8f16ehju4tu5p89vv4tkr065clbnt8.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.805667268677-kk8f16ehju4tu5p89vv4tkr065clbnt8</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAY7WkvWrh9vdV2Vdyq3b3ZlBXXT68dRJw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>805667268677</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.tarik.questOfKnowledges</string>
+	<key>PROJECT_ID</key>
+	<string>quest-d021e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>quest-d021e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:805667268677:ios:5f076e2bd49d7de8</string>
+	<key>DATABASE_URL</key>
+	<string>https://quest-d021e.firebaseio.com</string>
+</dict>
+</plist>

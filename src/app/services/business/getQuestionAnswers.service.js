@@ -4,7 +4,7 @@
     .module('questOfknowledges')
     .factory('getQuestionAnswersService', function (utils, persistFetchedResults) {
       function fetchQuestionsAnswers(response) {
-          if (utils.checkResponse(response.results)) {
+          if (utils.checkResponse(response)) {
             var newResults = utils.reformatResults(response.results);
             persistFetchedResults.setItem('APP_DATA', newResults);
           } else {

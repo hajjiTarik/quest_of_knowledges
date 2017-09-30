@@ -51,7 +51,7 @@
         })
 
         socketIO.on('get data', function(res){
-          getQuestionAnswersService.fetchQuestionsAnswers(res);
+          getQuestionAnswersService.fetchQuestionsAnswers(JSON.parse(res));
         })
 
       }

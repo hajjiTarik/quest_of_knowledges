@@ -55,7 +55,7 @@ module.exports = {
   createGame: function (sessionId, dispatcher) {
     //console.log('in create game');
     var uuid1 = uuid.v4();
-    var game = config.redis_root_key + uuid1;
+    var game = config.redis.redis_root_key + uuid1;
     client.hmset(game, {
       'player1': sessionId,
       'player2': ''

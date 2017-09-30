@@ -1,13 +1,12 @@
 var express = require('express');
 var app = express();
-var fs = require('fs');
 var http = require('http').Server(app);
-var io = require('socket.io').listen(http);
+var fs = require('fs');
 var path = require('path');
-var uuid = require('node-uuid');
+var io = require('socket.io').listen(http);
 var redis = require('./redis');
 var config = require('./config');
-var requester = require('./requester');
+
 
 app.use(express.static('www'));
 app.use(express.static('bower_components'));
@@ -28,23 +27,15 @@ var associateGame = function(obj){
   }
 };
 
-var options = {
-  host: 'opentdb.com',
-  port: 443,
-  path: '/api.php?amount=10&category=9&type=multiple',
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-};
-var res = [];
-
-requester.getJSON(options,function(statusCode, result) {
-  console.log("onResult: (" + statusCode + ")" + JSON.stringify(result));
-  res = result;
-});
 io.sockets.on('connection', function(socket){
-  socket.emit('get data', res);
+  fs.readFile('./data.JSON', 'utf8', function (err,data) {
+    if(err) console.log('\x1b[31m','error: ' + err);
+
+
+    console.log('\x1b[32m','data received with success');
+    socket.emit('get data', data);
+  });
+
 
   redis.checkAwaitingGames(socket, associateGame, dispatcher);
 
@@ -64,6 +55,6 @@ io.sockets.on('connection', function(socket){
   });
 });
 
-http.listen(config.server_port, function(){
-  console.log('Listening on port ' + config.server_port);
+http.listen(config.redis.server_port, function(){
+  console.log('\x1b[33m%s\x1b[0m','Listening on port ' + config.redis.server_port);
 });
