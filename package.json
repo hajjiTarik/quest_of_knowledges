@@ -76,7 +76,7 @@
     "main": "gulpfile.js",
     "dependencies": {
         "angular-uuid": "0.0.4",
-        "cordova-android": "~5.2.2",
+        "cordova-android": "~6.2.0",
         "cordova-ios": "^4.4.0",
         "cordova-plugin-console": "~1.0.1",
         "cordova-plugin-device": "~1.0.1",
@@ -87,7 +87,7 @@
         "cordova-plugin-whitelist": "~1.0.0",
         "ionic-plugin-keyboard": "~1.0.4",
         "redis": "^2.7.1",
-        "socket.io": "^2.0.3"
+        "socket.io": "^3.0.0"
     },
     "cordova": {
         "platforms": [
