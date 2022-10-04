@@ -1,0 +1,27 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:debug:20170905':
+    - socket.io > debug:
+        patched: '2022-10-04T18:50:49.805Z'
+    - socket.io > engine.io > debug:
+        patched: '2022-10-04T18:50:49.805Z'
+    - socket.io > socket.io-parser > debug:
+        patched: '2022-10-04T18:50:49.805Z'
+    - socket.io > socket.io-client > debug:
+        patched: '2022-10-04T18:50:49.805Z'
+    - socket.io > socket.io-client > engine.io-client > debug:
+        patched: '2022-10-04T18:50:49.805Z'
+    - socket.io > socket.io-client > socket.io-parser > debug:
+        patched: '2022-10-04T18:50:49.805Z'
+  'npm:lodash:20180130':
+    - cordova-ios > plist > xmlbuilder > lodash:
+        patched: '2022-10-04T18:50:49.805Z'
+    - cordova-android > cordova-common > plist > xmlbuilder > lodash:
+        patched: '2022-10-04T18:50:49.805Z'
+    - cordova-ios > cordova-common > plist > xmlbuilder > lodash:
+        patched: '2022-10-04T18:50:49.805Z'
+    - cordova-ios > ios-sim > plist > xmlbuilder > lodash:
+        patched: '2022-10-04T18:50:49.805Z'
