@@ -87,7 +87,7 @@
         "cordova-plugin-whitelist": "~1.0.0",
         "ionic-plugin-keyboard": "~1.0.4",
         "redis": "^2.7.1",
-        "socket.io": "^2.0.3"
+        "socket.io": "^2.5.0"
     },
     "cordova": {
         "platforms": [
