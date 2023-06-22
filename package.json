@@ -76,7 +76,7 @@
     "main": "gulpfile.js",
     "dependencies": {
         "angular-uuid": "0.0.4",
-        "cordova-android": "~5.2.2",
+        "cordova-android": "~6.2.0",
         "cordova-ios": "^4.4.0",
         "cordova-plugin-console": "~1.0.1",
         "cordova-plugin-device": "~1.0.1",
